@@ -3,9 +3,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import tw from "tailwind-styled-components"
 import Map from './components/Map'
-// import Header from './components/Header'
-// import { ActionButtons } from './components/ActionButtons'
-// import InputButton from './components/InputButton'
+import Link from 'next/link'
 
 export default function Home() {
   
@@ -25,21 +23,29 @@ export default function Home() {
         </Header>
         {/*ActionButtons*/}
         <ActionButtons>
-          <ActionButton>
-            <ActionButtonImg src='https://i.ibb.co/cyvcpfF/uber.png' />
-            Ride
-          </ActionButton >
-          <ActionButton >
-            <ActionButtonImg src='https://i.ibb.co/n776JLm/bike.png' />
-            Wheels
-          </ActionButton>
-          <ActionButton>
-            <ActionButtonImg src='https://i.ibb.co/5RjchBg/uberschedule.png' />
-            Reserve
-          </ActionButton>
+          <Link href='/search'>
+            <ActionButton>
+              <ActionButtonImg src='https://i.ibb.co/cyvcpfF/uber.png' />
+              Ride
+            </ActionButton >
+          </Link>
+          <Link href='/search'>
+            <ActionButton >
+              <ActionButtonImg src='https://i.ibb.co/n776JLm/bike.png' />
+              Wheels
+            </ActionButton>
+          </Link>
+          <Link href='/search'>
+            <ActionButton>
+              <ActionButtonImg src='https://i.ibb.co/5RjchBg/uberschedule.png' />
+              Reserve
+            </ActionButton>
+          </Link>
         </ActionButtons>
         {/*InputButton*/}
-        <InputButton></InputButton>
+        <InputButton>
+          Where To?
+        </InputButton>
       </ActionItems>
     </Wrapper>
   )
@@ -84,5 +90,5 @@ const ActionButtonImg = tw.img`
 `
 
 const InputButton= tw.div`
-  
+  h-20 bg-gray-200 text-2xl p-4 flex items-center mt-8 ml-7 mr-7
 `
