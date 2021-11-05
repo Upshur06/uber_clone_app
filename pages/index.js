@@ -1,11 +1,15 @@
+import { useEffect } from 'react'
 import Head from 'next/head'
 import Image from 'next/image'
 import tw from "tailwind-styled-components"
+import Map from './components/Map'
+
 
 export default function Home() {
+  
   return (
     <Wrapper>
-      <Map>Map</Map>
+      <Map />
       <ActionItems>Start</ActionItems>
     </Wrapper>
   )
@@ -13,10 +17,6 @@ export default function Home() {
 
 const Wrapper = tw.div`
   flex flex-col bg-red-300 h-screen
-`
-
-const Map = tw.div`
-  bg-red-500 flex-1
 `
 
 const ActionItems = tw.div`
