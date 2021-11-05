@@ -17,7 +17,11 @@ const Search = () => {
                     <Input placeholder='Enter pickup location' />
                     <Input placeholder='Where to?' />
                 </InputBoxes>
+                <PlusIcon src='https://img.icons8.com/ios/50/000000/plus-math.png' />
             </InPutContainer>
+            <SavedPlaces>
+                <StarIcon src='https://img.icons8.com/ios-filled/50/ffffff/star--v1.png' />
+            </SavedPlaces>
         </Wrapper>
     )
 }
@@ -37,23 +41,23 @@ const BackButton = tw.img`
 `
 
 const InPutContainer = tw.div`
-    bg-white flex
+    bg-white flex flex  items-center px-4 mb-2
 `
 
 const FromToIcons = tw.div`
-    w-10 flex flex-col
+    w-10 flex flex-col mr-2 items-center
 `
 
 const Circle = tw.img`
-    
+    h-2.5 
 `
 
 const Line = tw.img`
-
+    h-10
 `
 
 const Square = tw.img`
-
+    h-3
 `
 
 const InputBoxes = tw.div`
@@ -61,5 +65,17 @@ const InputBoxes = tw.div`
 `
 
 const Input = tw.input`
-    h-10 bg-gray-200 my-2 rounded-2 p-2 outline-none border-none
+    h-10 bg-gray-200 my-2 rounded-2 p-2 outline-none border-none 
+`
+
+const PlusIcon = tw.img`
+    w-10 h-10 bg-gray-200 rounded-full ml-3 justify-content
+`
+
+const SavedPlaces = tw.div`
+
+`
+
+const StarIcon = tw.img`
+
 `
