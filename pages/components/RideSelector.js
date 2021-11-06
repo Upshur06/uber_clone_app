@@ -1,19 +1,22 @@
 import React from 'react'
 import tw from "tailwind-styled-components"
+import { carList } from '../data/carList'
 
 const RideSelector = () => {
     return (
         <Wrapper>
             <Title>Choose a ride, or swipe up for more</Title>
             <Carlist>
-                <Car>
-                    <CarImg src='https://i.ibb.co/cyvcpfF/uberx.png' />
-                    <CarDetails>
-                        <Service>UberX</Service>
-                        <Time>5 min away</Time>
-                    </CarDetails>
-                    <Price>$24.00</Price>
-                </Car>
+                { carList.map((car, index)=>{
+                    <Car key={index}>
+                        <CarImg src={car.imgUrl} />
+                        <CarDetails>
+                            <Service>{car.service}</Service>
+                            <Time>5 min away</Time>
+                        </CarDetails>
+                        <Price>$24.00</Price>
+                    </Car>
+                })}
             </Carlist>
         </Wrapper>
     )
