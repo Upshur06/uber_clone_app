@@ -12,9 +12,6 @@ const Confirm = () => {
     const [pickupCoordinates, setPickupCoordinates] = useState();
     const [dropoffCoordinates, setDropOffCoordinates] = useState();
 
-    console.log('pickup', pickup);
-    console.log('dropoff', dropoff);
-
     const getPickupCoordinates = (pickup) => {
 
         fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${pickup}.json?` +
@@ -74,13 +71,13 @@ const Wrapper = tw.div`
 `
 
 const RideContainer = tw.div`
-    flex-1 flex flex-col
+    flex-1 flex flex-col h-1/2
 `
 
 const ConfirmBtnContainer = tw.div`
-    bg-black text-white border-t-2
+     border-t-2
 `
 
 const ConfirmBtn = tw.div`
-    my-4 py-4 text-center text-xl
+    bg-black text-white my-4 mx-4 py-4 text-center text-xl
 `

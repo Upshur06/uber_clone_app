@@ -7,7 +7,7 @@ const RideSelector = () => {
         <Wrapper>
             <Title>Choose a ride, or swipe up for more</Title>
             <Carlist>
-                { carList.map((car, index)=>{
+                { carList.map((car, index)=>(
                     <Car key={index}>
                         <CarImg src={car.imgUrl} />
                         <CarDetails>
@@ -16,7 +16,7 @@ const RideSelector = () => {
                         </CarDetails>
                         <Price>$24.00</Price>
                     </Car>
-                })}
+                ))}
             </Carlist>
         </Wrapper>
     )
@@ -25,7 +25,7 @@ const RideSelector = () => {
 export default RideSelector
 
 const Wrapper = tw.div`
-    flex-1 
+    flex-1 overflow-y-scroll flex flex-col
 `
 
 const Title = tw.div`
@@ -33,15 +33,15 @@ const Title = tw.div`
 `
 
 const Carlist = tw.div`
-
+    overflow-y-scroll
 `
 
 const Car = tw.div`
-    flex p-4
+    flex p-4 items-center 
 `
 
 const CarImg = tw.img`
-    h-14 mr-2
+    h-14 mr-4
 `
 
 const CarDetails = tw.div`
@@ -49,7 +49,7 @@ const CarDetails = tw.div`
 `
 
 const Service = tw.div`
-    font-medium
+    font-medium 
 `
 
 const Time = tw.div`
