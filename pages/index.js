@@ -82,7 +82,7 @@ const ActionButtons = tw.div`
 `
 
 const ActionButton = tw.div`
-  flex bg-gray-200 flex-1 m-7 h-38 items-center flex-col justify-center rounded-lg transform hover:scale-105 transition text-xl
+  flex bg-gray-200 flex-1 m-5 h-32 items-center flex-col justify-center rounded-lg transform hover:scale-105 transition text-xl
 `
 
 const ActionButtonImg = tw.img`

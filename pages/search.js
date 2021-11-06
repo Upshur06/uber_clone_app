@@ -1,11 +1,14 @@
 import React from 'react'
 import tw from "tailwind-styled-components"
+import Link from 'next/link'
 
 const Search = () => {
     return (
         <Wrapper>
             <ButtonContainer>
-                <BackButton src='https://img.icons8.com/ios-filled/50/000000/left.png' />
+                <Link href='/'>
+                    <BackButton src='https://img.icons8.com/ios-filled/50/000000/left.png' />
+                </Link>
             </ButtonContainer>
             <InPutContainer>
                 <FromToIcons>
@@ -21,7 +24,11 @@ const Search = () => {
             </InPutContainer>
             <SavedPlaces>
                 <StarIcon src='https://img.icons8.com/ios-filled/50/ffffff/star--v1.png' />
+                Saved Places
             </SavedPlaces>
+            <ConfirmContainer>
+                <ConfirmButton>Confirm Location</ConfirmButton>
+            </ConfirmContainer>
         </Wrapper>
     )
 }
@@ -37,7 +44,7 @@ const ButtonContainer = tw.div`
 `
 
 const BackButton = tw.img`
-    h-12
+    h-12 transform hover:scale-105 transition
 `
 
 const InPutContainer = tw.div`
@@ -69,13 +76,21 @@ const Input = tw.input`
 `
 
 const PlusIcon = tw.img`
-    w-10 h-10 bg-gray-200 rounded-full ml-3 justify-content
+    w-10 h-10 bg-gray-200 rounded-full ml-3 justify-content ml-3
 `
 
 const SavedPlaces = tw.div`
-
+    flex items-center bg-white px-4 py-2 
 `
 
 const StarIcon = tw.img`
+    bg-gray-400 w-10 h-10 p-2 rounded-full mr-2
+`
 
+const ConfirmContainer = tw.div`
+
+`
+
+const ConfirmButton = tw.div`
+    h-10 bg-black text-white m-5 rounded-2 justify-content text-center py-2
 `
