@@ -21,7 +21,12 @@ const Map = (props) => {
             addToMap(map, props.dropoffCoordinates)
         }
         if(props.pickupCoordinates && props.dropoffCoordinates){
-            // map.fitBound
+            map.fitBounds([
+                props.dropoffCoordinates,
+                props.pickupCoordinates
+            ],{
+                padding: 60
+            })
         }
 
       }, [props.pickupCoordinates, props.dropoffCoordinates])
