@@ -20,11 +20,9 @@ const Map = (props) => {
         if(props.dropoffCoordinates){
             addToMap(map, props.dropoffCoordinates)
         }
-
         if(props.pickupCoordinates && props.dropoffCoordinates){
             // map.fitBound
         }
-
 
       }, [props.pickupCoordinates, props.dropoffCoordinates])
 
@@ -34,20 +32,9 @@ const Map = (props) => {
             .addTo(map);
       }
 
-    //   useEffect(()=>{
-    //       if(pickupCoordinates){
-    //           addToMap()
-    //       }
-    //     // console.log(props.pickupCoordinates)
-    //     // console.log(props.dropoffCoordinates)
-    //   }, [props.pickupCoordinates, props.dropoffCoordinates])
-
     return (
-        <Wrapper id='map'>
-            
-        </Wrapper>
+        <Wrapper id='map'></Wrapper>
     )
-
 }
 
 const Wrapper = tw.div`
