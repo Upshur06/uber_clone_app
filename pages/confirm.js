@@ -15,7 +15,6 @@ const Confirm = () => {
     // console.log('pickup', pickup);
     // console.log('dropoff', dropoff)
 
-
     const getPickupCoordinates = () => {
         const pickup = 'Santa Monica'
 
@@ -27,29 +26,28 @@ const Confirm = () => {
         )
         .then(response => response.json())
         .then(data => {
-            console.log(data.features[0].center)
-            // setPickupCoordinates(data.features[0].center)
+            setPickupCoordinates(data.features[0].center)
         })
     }
 
     const getDropOffCoordinates = () => {
         const dropoff = 'Los Angeles'
 
-        fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${dropoff}.json?`)
+        fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${dropoff}.json?` +
             new URLSearchParams({
                 access_token: 'pk.eyJ1IjoidXBzaHVyMDYiLCJhIjoiY2t2bHY4b3ZmMWM1cTJucWdrNW4xczYwbyJ9.QVJqO8s8uiq0fqdxdRYqCA',
                 limit: 1
             })
+        )
         .then(response => response.json())
         .then(data => {
-            console.log('DropOff')
-            console.log(data.features[0].center)
             setDropOffCoordinates(data.features[0].center)
         })
     }
 
     useEffect(()=>{
         getPickupCoordinates();
+        getDropOffCoordinates();
         // getPickupCoordinates(pickup);
         // getDropOffCoordinates(dropoff);
     }, [])
