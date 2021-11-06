@@ -16,7 +16,6 @@ const Confirm = () => {
     console.log('dropoff', dropoff);
 
     const getPickupCoordinates = (pickup) => {
-        // const pickup = 'Santa Monica'
 
         fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${pickup}.json?` +
             new URLSearchParams({
@@ -31,7 +30,6 @@ const Confirm = () => {
     }
 
     const getDropOffCoordinates = (dropoff) => {
-        // const dropoff = 'Los Angeles'
 
         fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${dropoff}.json?` +
             new URLSearchParams({
@@ -76,13 +74,13 @@ const Wrapper = tw.div`
 `
 
 const RideContainer = tw.div`
-    flex-1
+    flex-1 flex flex-col
 `
 
 const ConfirmBtnContainer = tw.div`
-    border-t-2
+    bg-black text-white border-t-2
 `
 
 const ConfirmBtn = tw.div`
-    bg-black text-white my-4 py-4 text-center text-xl
+    my-4 py-4 text-center text-xl
 `

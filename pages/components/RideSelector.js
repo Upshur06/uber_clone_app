@@ -29,7 +29,7 @@ const Wrapper = tw.div`
 `
 
 const Title = tw.div`
-    text-gray-500 text-center text-xs border-b
+    text-gray-500 text-center text-xs py-2 border-b
 `
 
 const Carlist = tw.div`
