@@ -1,8 +1,15 @@
-import React from 'react'
+import { useState } from 'react'
 import tw from "tailwind-styled-components"
 import Link from 'next/link'
 
 const Search = () => {
+
+    const [pickup, setPickUp] = useState('');
+    const [dropoff, setDropOff] = useState('');
+
+    console.log(pickup)
+    console.log(dropoff)
+
     return (
         <Wrapper>
             <ButtonContainer>
@@ -17,8 +24,16 @@ const Search = () => {
                     <Square src='https://img.icons8.com/windows/50/000000/square-full.png' />
                 </FromToIcons>
                 <InputBoxes>
-                    <Input placeholder='Enter pickup location' />
-                    <Input placeholder='Where to?' />
+                    <Input 
+                        placeholder='Enter pickup location' 
+                        value={pickup}  
+                        onChange={(e)=> setPickUp(e.target.value)} 
+                    />
+                    <Input 
+                        placeholder='Where to?' 
+                        value={dropoff}  
+                        onChange={(e)=> setDropOff(e.target.value)}   
+                    />
                 </InputBoxes>
                 <PlusIcon src='https://img.icons8.com/ios/50/000000/plus-math.png' />
             </InPutContainer>
@@ -26,9 +41,17 @@ const Search = () => {
                 <StarIcon src='https://img.icons8.com/ios-filled/50/ffffff/star--v1.png' />
                 Saved Places
             </SavedPlaces>
-            <ConfirmContainer>
-                <ConfirmButton>Confirm Location</ConfirmButton>
-            </ConfirmContainer>
+            <Link href={{
+                pathname: '/confirm',
+                query: {
+                    pickup: 'Santa Monica',
+                    dropoff: 'Los Angeles'
+                }
+            }}>
+                <ConfirmBtnContainer>
+                    <ConfirmButton>Confirm Locations</ConfirmButton>
+                </ConfirmBtnContainer>
+            </Link>
         </Wrapper>
     )
 }
@@ -44,7 +67,7 @@ const ButtonContainer = tw.div`
 `
 
 const BackButton = tw.img`
-    h-12 transform hover:scale-105 transition
+    h-12 transform hover:scale-105 transition cursor-pointer
 `
 
 const InPutContainer = tw.div`
@@ -87,10 +110,10 @@ const StarIcon = tw.img`
     bg-gray-400 w-10 h-10 p-2 rounded-full mr-2
 `
 
-const ConfirmContainer = tw.div`
-
+const ConfirmBtnContainer = tw.div`
+   
 `
 
 const ConfirmButton = tw.div`
-    h-10 bg-black text-white m-5 rounded-2 justify-content text-center py-2
+    h-10 bg-black text-white m-5 rounded-2 text-center py-2 cursor-pointer
 `
