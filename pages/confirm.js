@@ -4,30 +4,31 @@ import Map from './components/Map'
 import { userRouter } from 'next/router'
 import RideSelector from './components/RideSelector'
 
-const confirm = () => {
-    const router = userRouter();
+const Confirm = () => {
+    // const router = userRouter();
 
-    const {pickup, dropoff} = router;
+    // const {pickup, dropoff} = router;
 
     const [pickupCoordinates, setPickupCoordinates] = useState();
     const [dropoffCoordinates, setDropOffCoordinates] = useState();
 
-    console.log('pickup', pickup);
-    console.log('dropoff', dropoff)
+    // console.log('pickup', pickup);
+    // console.log('dropoff', dropoff)
 
 
     const getPickupCoordinates = () => {
         const pickup = 'Santa Monica'
 
-        fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${pickup}.json?`)
+        fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${pickup}.json?` +
             new URLSearchParams({
                 access_token: 'pk.eyJ1IjoidXBzaHVyMDYiLCJhIjoiY2t2bHY4b3ZmMWM1cTJucWdrNW4xczYwbyJ9.QVJqO8s8uiq0fqdxdRYqCA',
                 limit: 1
             })
+        )
         .then(response => response.json())
         .then(data => {
             console.log(data.features[0].center)
-            setPickupCoordinates(data.features[0].center)
+            // setPickupCoordinates(data.features[0].center)
         })
     }
 
@@ -48,8 +49,9 @@ const confirm = () => {
     }
 
     useEffect(()=>{
-        getPickupCoordinates(pickup);
-        getDropOffCoordinates(dropoff);
+        getPickupCoordinates();
+        // getPickupCoordinates(pickup);
+        // getDropOffCoordinates(dropoff);
     }, [])
 
     return (
@@ -71,7 +73,7 @@ const confirm = () => {
     )
 }
 
-export default confirm
+export default Confirm
 
 const Wrapper = tw.div`
     flex h-screen flex-col
