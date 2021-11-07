@@ -92,9 +92,9 @@ const ConfirmBtn = tw.div`
 `
 
 const ButtonContainer = tw.div`
-    bg-white px-4
+    rounded-full absolute top-1 left-4 z-10 bg-white shadow-md
 `
 
 const BackButton = tw.img`
-    h-12 transform hover:scale-105 transition cursor-pointer absolute top-0 left-4 border-b
+    h-full object contain transform hover:scale-105 transition cursor-pointer 
 `
