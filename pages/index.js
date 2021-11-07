@@ -1,27 +1,45 @@
-import { useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import Head from 'next/head'
 import Image from 'next/image'
 import tw from "tailwind-styled-components"
 import Map from './components/Map'
 import Link from 'next/link'
+import { auth } from '../firebase'
+import { onAuthStateChanged, signOut } from 'firebase/auth'
+import { useRouter } from 'next/router'
 
 export default function Home() {
+    const [user, setUser] = useState(null);
+    const router = useRouter();
+
+    useEffect(() => {
+      return onAuthStateChanged(auth, user => {
+        if(user){
+          setUser({
+            name: user.displayName,
+            photoURL: user.photoURL
+          })
+        }else{
+          setUser(null)
+          router.push('/login')
+        }
+      })
+    }, [])
   
   return (
     <Wrapper>
       <Map />
       <ActionItems>
-        {/*Header*/}
         <Header>
           <UberLogo src='https://i.ibb.co/84stgjq/uber-technologies-new-20218114.jpg' />
           <Profile>
-            <Name> Michael Upshur </Name>
+            <Name> {user && user.name} </Name>
             <UserImage 
-              src='https://scontent-lga3-2.xx.fbcdn.net/v/t1.6435-9/194350498_10100988701417037_294715602391550969_n.jpg?_nc_cat=109&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=VmCH5dm6IB8AX_FA-Tz&_nc_ht=scontent-lga3-2.xx&oh=49238684c92e0789f0a425b0bb00ff1e&oe=61A8BDF5'
+              src={user && user.photoURL}
+              onClick={() => signOut(auth)}
             />
           </Profile>
         </Header>
-        {/*ActionButtons*/}
         <ActionButtons>
           <Link href='/search'>
             <ActionButton>
@@ -42,7 +60,6 @@ export default function Home() {
             </ActionButton>
           </Link>
         </ActionButtons>
-        {/*InputButton*/}
         <InputButton>
           Where To?
         </InputButton>
@@ -74,7 +91,7 @@ const Name = tw.div`
   mr-4 w-20 text-small
 `
 const UserImage = tw.img`
-  h-12 w-12 rounded-full border border-gray-200 p-px
+  h-12 w-12 rounded-full border border-gray-200 p-px cursor-pointer
 `
 
 const ActionButtons = tw.div`
@@ -82,7 +99,7 @@ const ActionButtons = tw.div`
 `
 
 const ActionButton = tw.div`
-  flex bg-gray-200 flex-1 m-5 h-32 items-center flex-col justify-center rounded-lg transform hover:scale-105 transition text-xl
+  flex bg-gray-200 flex-1 m-5 h-32 items-center flex-col justify-center rounded-lg transform hover:scale-105 transition text-xl cursor-pointer
 `
 
 const ActionButtonImg = tw.img`

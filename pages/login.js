@@ -1,13 +1,26 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import tw from "tailwind-styled-components"
+import { useRouter } from 'next/router'
+import { signInWithPopup, onAuthStateChanged } from 'firebase/auth'
+import { auth, provider } from '../firebase'
 
 const Login = () => {
+    const router = useRouter()
+
+    useEffect(()=>{
+        onAuthStateChanged(auth, user => {
+            if(user){
+                router.push('/')
+            }
+        })
+    }, [])
+
     return (
         <Wrapper>
             <UberLogo src='https://i.ibb.co/84stgjq/uber-technologies-new-20218114.jpg' />
             <Title>Log in to access your account</Title>
             <HeadImg src='https://i.ibb.co/CsV9RYZ/login-image.jpg' />
-            <SignInBtn>
+            <SignInBtn onClick={() => signInWithPopup(auth, provider)}>
                 Sign In With Google
             </SignInBtn>
         </Wrapper>
