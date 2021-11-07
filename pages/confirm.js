@@ -10,8 +10,8 @@ const Confirm = () => {
 
     const { pickup, dropoff } = router.query;
 
-    const [pickupCoordinates, setPickupCoordinates] = useState();
-    const [dropoffCoordinates, setDropOffCoordinates] = useState();
+    const [pickupCoordinates, setPickupCoordinates] = useState([0, 0]);
+    const [dropoffCoordinates, setDropOffCoordinates] = useState([0, 0]);
 
     const getPickupCoordinates = (pickup) => {
 
@@ -58,7 +58,10 @@ const Confirm = () => {
                 </Link>
             </ButtonContainer>
             <RideContainer>
-                <RideSelector />
+                <RideSelector 
+                    pickupCoordinates={pickupCoordinates}
+                    dropoffCoordinates={dropoffCoordinates}
+                />
 
                 <ConfirmBtnContainer>
                     <ConfirmBtn>
@@ -93,5 +96,5 @@ const ButtonContainer = tw.div`
 `
 
 const BackButton = tw.img`
-    h-12 transform hover:scale-105 transition cursor-pointer absolute top-0 left-4
+    h-12 transform hover:scale-105 transition cursor-pointer absolute top-0 left-4 border-b
 `
